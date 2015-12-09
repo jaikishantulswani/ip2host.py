@@ -7,8 +7,9 @@ Create a file with name "ip.txt" and put it in same folder with this script. ip.
 
 eg:
 
-127.0.0.1\n
-8.8.8.8\n
+127.0.0.1
+
+8.8.8.8
 4.2.2.2
 
 
