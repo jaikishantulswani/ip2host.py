@@ -1,16 +1,22 @@
 #!/usr/bin/python
 import socket
+import sys
 
 def check_ip():
 	try:
-		socket.inet_aton(IP) # check for valid ipv4 address
+		socket.inet_aton(ip)
 	except Exception, e:
 		print "Given list do not have valid list of ipv4 addresses."
-		print "Invalid ip addresss = " + str(IP)
+		print "Invalid ip addresss = " + str(ip)
 		exit()
 
-with open('ip.txt') as ipfile:
+file = sys.argv[1]
+with open(file) as ipfile:
 	for IP in ipfile:
-		check_ip()
-		host = socket.getfqdn(IP)
-		print host, IP.strip()
+		ip = IP.rstrip('\r\n')
+		if ip == '':
+			pass
+		else:
+			check_ip()
+			host = socket.getfqdn(ip)
+			print host, ip
