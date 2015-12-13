@@ -4,7 +4,13 @@ This will convert ip to hostname (FQDN) in python 2
 
 <h2>How to use:</h2>
 
-Create a file with name "ip.txt" and put it in same folder with this script. ip.txt should have list of ip, one per line.
+Provide list of ip file as an argument. 
+
+<h3>Run</h3>
+
+python ip2host.py ip.txt
+
+Should have list of ip, one per line.
 
 eg:
 
