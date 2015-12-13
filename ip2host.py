@@ -11,9 +11,7 @@ def check_ip():
         try:
                 socket.inet_aton(ip)
         except Exception, e:
-                print RED+"Given list do not have valid list of ipv4 addresses."
-                print "Invalid ip addresss = "+NORMAL + str(ip)
-                exit()
+                print RED+"Invalid ip addresss = "+NORMAL + str(ip)
 
 file = sys.argv[1]
 with open(file) as ipfile:
