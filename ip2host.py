@@ -1,26 +1,18 @@
-#!/usr/bin/python
-
+import fileinput
 import socket
-import sys
 
-BLUE='\033[34m'
-RED='\033[31m'
-NORMAL='\033[0m'
+RED = '31'
+BLUE = '34'
 
-def check_ip():
+def color(color_code, text):
+    return '\033[{}m{}\033[0m'.format(color_code, text)
+
+for line in fileinput.input():
+    for ip in line.split():
         try:
-                socket.inet_aton(ip)
-        except Exception, e:
-                print RED+"Invalid ip addresss = "+NORMAL + str(ip)
-
-file = sys.argv[1]
-with open(file) as ipfile:
-        for iplist in ipfile:
-                for IP in iplist.split():
-                        ip = IP.strip(' \t\n\r')
-                        if ip == '':
-                                pass
-                        else:
-                                check_ip()
-                                host = socket.getfqdn(ip)
-                                print BLUE+ip+NORMAL + " hostname is " + BLUE+host+NORMAL
+            socket.inet_aton(ip)
+        except Exception as invalid_ip:
+            print color(RED, 'Invalid IP address = ') + ip
+        else:
+            hostname = socket.getfqdn(ip)
+            print color(BLUE, ip) + ' hostname is ' + color(BLUE, hostname)
